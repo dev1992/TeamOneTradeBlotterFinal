@@ -8,59 +8,62 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
-
 /**
  * The persistent class for the traders database table.
  * 
  */
 @Entity
-@Table(name="traders")
-@NamedQuery(name="Trader.findAll", query="SELECT t FROM Trader t")
+@Table(name = "traders")
+@NamedQuery(name = "Trader.findAll", query = "SELECT t FROM Trader t")
 public class Trader implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int traderId;
 
 	private int password;
 
-	private String productType;
-
 	@Lob
 	private String scratchPad;
 
-	private String traderName;
-
 	private String userName;
 
-	//bi-directional many-to-one association to Mail
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	private String firstName;
+	private String lastName;
+
+	public Trader(String userName, int password, String firstName, String lastName) {
+		this.userName = userName;
+		this.password = password;
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+
+	}
+
+	// bi-directional many-to-one association to Mail
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trader")
+	@JsonManagedReference
 	private List<Mail> mails;
 
-	//bi-directional many-to-one association to Message
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	// bi-directional many-to-one association to Message
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trader")
+	@JsonManagedReference
 	private List<Message> messages;
 
-	//bi-directional many-to-one association to Note
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	// bi-directional many-to-one association to Note
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trader")
+	@JsonManagedReference
 	private List<Note> notes;
 
-	//bi-directional many-to-many association to Subject
+	// bi-directional many-to-many association to Subject
 	@ManyToMany
-	@JoinTable(
-		name="traders_has_subjects"
-		, joinColumns={
-			@JoinColumn(name="Traders_traderId")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="Subjects_subjectId")
-			}
-		)
+	@JoinTable(name = "traders_has_subjects", joinColumns = {
+			@JoinColumn(name = "Traders_traderId") }, inverseJoinColumns = { @JoinColumn(name = "Subjects_subjectId") })
+	@JsonBackReference
 	private List<Subject> subjects;
 
-	//bi-directional many-to-one association to Trade
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	// bi-directional many-to-one association to Trade
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trader")
 	@JsonManagedReference
 	private List<Trade> trades;
 
@@ -83,28 +86,12 @@ public class Trader implements Serializable {
 		this.password = password;
 	}
 
-	public String getProductType() {
-		return this.productType;
-	}
-
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
-
 	public String getScratchPad() {
 		return this.scratchPad;
 	}
 
 	public void setScratchPad(String scratchPad) {
 		this.scratchPad = scratchPad;
-	}
-
-	public String getTraderName() {
-		return this.traderName;
-	}
-
-	public void setTraderName(String traderName) {
-		this.traderName = traderName;
 	}
 
 	public String getUserName() {
@@ -209,6 +196,22 @@ public class Trader implements Serializable {
 		trade.setTrader(null);
 
 		return trade;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }

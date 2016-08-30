@@ -31,7 +31,7 @@ public class Trade implements Serializable {
 
 	private byte media;
 
-	private BigDecimal price;
+	private double price;
 
 	private String productName;
 
@@ -97,11 +97,11 @@ public class Trade implements Serializable {
 		this.media = media;
 	}
 
-	public BigDecimal getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

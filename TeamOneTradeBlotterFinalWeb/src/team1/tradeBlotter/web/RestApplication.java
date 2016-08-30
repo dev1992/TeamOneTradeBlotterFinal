@@ -6,7 +6,9 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+//import team1.blotterWeb.TraderResource;
 import team1.tradeBlotter.web.TradeResource;
+import team1.tradeBlotter.web.TraderResource;
 
 @ApplicationPath("/rest")
 public class RestApplication extends Application {
@@ -16,6 +18,7 @@ public class RestApplication extends Application {
 	public RestApplication() {
 		
 		singletons.add(new TradeResource());
+		singletons.add(new TraderResource());
 	}
 	
 	@Override
