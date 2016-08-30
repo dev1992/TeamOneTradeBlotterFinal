@@ -10,6 +10,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.SessionFactory;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import team1.tradeBlotter.jpa.Trade;
 
 /**
@@ -19,27 +23,23 @@ import team1.tradeBlotter.jpa.Trade;
 @Remote(TradeFilterBeanRemote.class)
 @Local(TradeFilterBeanLocal.class)
 public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLocal {
-	
-	@PersistenceContext(name="TeamOneTradeBlotterFinalJPA")
-    private EntityManager entityManager;
 
-    /**
-     * Default constructor. 
-     */
-    public TradeFilterBean() {
-        // TODO Auto-generated constructor stub
-    }
-    
-    public List<Trade> getAllTrades () {
-    	
-    	System.out.println("In TradeFilterBean, method getAllTrades");
-    	
-    	TypedQuery<Trade> query = entityManager.createQuery("SELECT p FROM Trade AS p", Trade.class);
-    	List<Trade> trades = query.getResultList();
-    	
-    	for (Trade trade : trades) 
-    		System.out.println(trade.getProductName());
-    	
-    	return trades;
-    }
+	@PersistenceContext(name = "TeamOneTradeBlotterFinalJPA")
+	private EntityManager entityManager;
+
+	/**
+	 * Default constructor.
+	 */
+	public TradeFilterBean() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Trade> getAllTrades() {
+
+		System.out.println("In TradeFilterBean, method getAllTrades");
+
+		TypedQuery<Trade> query = entityManager.createQuery("SELECT p FROM Trade AS p", Trade.class);
+		List<Trade> trades = query.getResultList();
+		return trades;
+	}
 }

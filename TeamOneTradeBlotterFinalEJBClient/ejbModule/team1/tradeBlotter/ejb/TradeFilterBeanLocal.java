@@ -9,5 +9,5 @@ import team1.tradeBlotter.jpa.Trade;
 @Local
 public interface TradeFilterBeanLocal {
 
-	public List<Trade> getAllTrades ();
+	public List<Trade> getAllTrades();
 }

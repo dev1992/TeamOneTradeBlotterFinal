@@ -2,6 +2,10 @@ package team1.tradeBlotter.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -19,27 +23,27 @@ public class Trader implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int traderId;
 
-	private String firstName;
-
-	private String lastName;
-
 	private int password;
+
+	private String productType;
 
 	@Lob
 	private String scratchPad;
 
+	private String traderName;
+
 	private String userName;
 
 	//bi-directional many-to-one association to Mail
-	@OneToMany(mappedBy="trader")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
 	private List<Mail> mails;
 
 	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="trader")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
 	private List<Message> messages;
 
 	//bi-directional many-to-one association to Note
-	@OneToMany(mappedBy="trader")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
 	private List<Note> notes;
 
 	//bi-directional many-to-many association to Subject
@@ -56,7 +60,8 @@ public class Trader implements Serializable {
 	private List<Subject> subjects;
 
 	//bi-directional many-to-one association to Trade
-	@OneToMany(mappedBy="trader")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	@JsonManagedReference
 	private List<Trade> trades;
 
 	public Trader() {
@@ -70,22 +75,6 @@ public class Trader implements Serializable {
 		this.traderId = traderId;
 	}
 
-	public String getFirstName() {
-		return this.firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return this.lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public int getPassword() {
 		return this.password;
 	}
@@ -94,12 +83,28 @@ public class Trader implements Serializable {
 		this.password = password;
 	}
 
+	public String getProductType() {
+		return this.productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+
 	public String getScratchPad() {
 		return this.scratchPad;
 	}
 
 	public void setScratchPad(String scratchPad) {
 		this.scratchPad = scratchPad;
+	}
+
+	public String getTraderName() {
+		return this.traderName;
+	}
+
+	public void setTraderName(String traderName) {
+		this.traderName = traderName;
 	}
 
 	public String getUserName() {
