@@ -36,14 +36,17 @@ public class Trader implements Serializable {
 
 	//bi-directional many-to-one association to Mail
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	@JsonManagedReference
 	private List<Mail> mails;
 
 	//bi-directional many-to-one association to Message
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	@JsonManagedReference
 	private List<Message> messages;
 
 	//bi-directional many-to-one association to Note
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="trader")
+	@JsonManagedReference
 	private List<Note> notes;
 
 	//bi-directional many-to-many association to Subject

@@ -3,6 +3,8 @@ package team1.tradeBlotter.jpa;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 /**
  * The persistent class for the messages database table.
@@ -23,11 +25,13 @@ public class Message implements Serializable {
 	//bi-directional many-to-one association to Subject
 	@ManyToOne
 	@JoinColumn(name="Subjects_subjectId")
+	@JsonBackReference
 	private Subject subject;
 
 	//bi-directional many-to-one association to Trader
 	@ManyToOne
 	@JoinColumn(name="Traders_traderId")
+	@JsonBackReference
 	private Trader trader;
 
 	public Message() {

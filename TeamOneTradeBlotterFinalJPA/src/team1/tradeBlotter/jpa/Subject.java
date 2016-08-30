@@ -2,6 +2,9 @@ package team1.tradeBlotter.jpa;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 
 
@@ -26,6 +29,7 @@ public class Subject implements Serializable {
 
 	//bi-directional many-to-one association to Message
 	@OneToMany(mappedBy="subject")
+	@JsonManagedReference
 	private List<Message> messages;
 
 	//bi-directional many-to-many association to Trader
