@@ -53,16 +53,18 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 		Query query = em.createQuery("Select userName from Trader t where userName = :userName");
 		query.setParameter("userName", userName);
 		List<String> results = query.getResultList();
+		List<Integer> passwords;
 		if (results.isEmpty()) {
 			return false;
 		} else {
 			query = em.createQuery("Select password from Trader t where username = :username");
 			query.setParameter("username", userName);
-			results = query.getResultList();
+			passwords = query.getResultList();
 			System.out.println(results);
-			String actualPassword = results.get(0);
-
-			return actualPassword.equals(password);
+			Inter actualPassword = passwords.get(0);
+			System.out.println("Actual Passwd:---> "+actualPassword);
+			System.out.println("Hash code --> "+password.hashCode());
+			return actualPassword == password.hashCode();
 		}
 	}
 
