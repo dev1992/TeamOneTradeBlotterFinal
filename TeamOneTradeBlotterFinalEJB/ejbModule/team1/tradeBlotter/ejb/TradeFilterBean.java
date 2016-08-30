@@ -1,6 +1,5 @@
 package team1.tradeBlotter.ejb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -9,10 +8,6 @@ import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
-import org.hibernate.SessionFactory;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import team1.tradeBlotter.jpa.Trade;
 

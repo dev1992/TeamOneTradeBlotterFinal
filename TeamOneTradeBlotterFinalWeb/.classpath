@@ -14,6 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="src" path="/TeamOneTradeBlotterFinalEJBClient"/>
-	<classpathentry kind="lib" path="C:/Users/Grad160/Desktop/json-simple-1.1.1.jar/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/JavaEEJBossDev/Snippets/jackson-annotations-2.5.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
