@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit transaction-type="JTA"
+		name="TeamOneTradeBlotterFinalJPA">
+		<jta-data-source>java:jboss/datasources/team1_trade_blotterDS</jta-data-source>
+		<class>team1.tradeBlotter.jpa.Mail</class>
+		<class>team1.tradeBlotter.jpa.MailPK</class>
+		<class>team1.tradeBlotter.jpa.Message</class>
+		<class>team1.tradeBlotter.jpa.MessagePK</class>
+		<class>team1.tradeBlotter.jpa.Note</class>
+		<class>team1.tradeBlotter.jpa.NotePK</class>
+		<class>team1.tradeBlotter.jpa.Subject</class>
+		<class>team1.tradeBlotter.jpa.Trader</class>
+		<class>team1.tradeBlotter.jpa.Trade</class>
+		<class>team1.tradeBlotter.jpa.TradePK</class>
+	</persistence-unit>
+</persistence>

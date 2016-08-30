@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TeamOneTradeBlotterFinal">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="TeamOneTradeBlotterFinalJPA.jar" deploy-path="/lib" handle="module:/resource/TeamOneTradeBlotterFinalJPA/TeamOneTradeBlotterFinalJPA">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterFinalEJB.jar" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterFinalEJB/TeamOneTradeBlotterFinalEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterFinalEJBClient.jar" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterFinalEJBClient/TeamOneTradeBlotterFinalEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterFinalAppClient.jar" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterFinalAppClient/TeamOneTradeBlotterFinalAppClient">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TeamOneTradeBlotterFinalWeb.war" deploy-path="/" handle="module:/resource/TeamOneTradeBlotterFinalWeb/TeamOneTradeBlotterFinalWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
