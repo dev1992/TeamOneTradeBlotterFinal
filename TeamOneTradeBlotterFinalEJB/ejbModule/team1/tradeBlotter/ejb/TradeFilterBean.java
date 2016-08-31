@@ -62,9 +62,9 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 			passwords = query.getResultList();
 			System.out.println(results);
 			Integer actualPassword = passwords.get(0);
-			System.out.println("Actual Passwd:---> "+actualPassword);
-			System.out.println("Hash code --> "+password.hashCode());
-			return actualPassword == password.hashCode();
+			System.out.println("Actual Passwd:---> " + Integer.valueOf(actualPassword));
+			System.out.println("Hash code --> " + password.hashCode());
+			return Integer.valueOf(actualPassword) == password.hashCode();
 		}
 	}
 
@@ -122,24 +122,6 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 
 		// Execute the query, and get a collection of products back.
 		List<Trade> trades = query.getResultList();
-
-		return trades;
-	}
-
-	public List<Trade> filterByQuantity(int quantity) {
-
-		String sql = "SELECT t FROM Trade AS t WHERE t.quantity = :quantity";
-		// System.out.println(sql);
-		TypedQuery<Trade> query = em.createQuery(sql, Trade.class);
-		query.setParameter("quantity", quantity);
-
-		// Execute the query, and get a collection of products back.
-		List<Trade> trades = query.getResultList();
-
-		// for (Trade trade: trades) {
-		// displayProductOnServerConsole("Got product in getProductsByName()",
-		// trades);
-		// }
 
 		return trades;
 	}

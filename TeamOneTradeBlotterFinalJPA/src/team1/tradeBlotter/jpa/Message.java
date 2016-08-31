@@ -30,6 +30,11 @@ public class Message implements Serializable {
 	@JoinColumn(name="Traders_traderId")
 	private Trader trader;
 
+	public Message(String messageBody,Subject subject) {
+		this.messageBody = messageBody;
+		this.subject = subject;
+	}
+	
 	public Message() {
 	}
 

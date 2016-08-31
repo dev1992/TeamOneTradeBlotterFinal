@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -50,23 +53,23 @@ public class TradeResource {
 
 	}
 
-	@GET
-	@Path("/filterbyname")
-	@Produces("application/json")
-	public List<Trade> filterByName(@QueryParam("productName") String productName) {
+	@POST
+	@Path("/filterbytypesecure")
+	@Consumes("application/x-www-form-urlencoded")
+	public List<Trade> filterByProductTypeSecure(@FormParam("productType") String productType) {
 		if (myLocalBean != null)
-			return myLocalBean.filterByName(productName);
+			return myLocalBean.filterByType(productType);
 		else
 			return null;
 
 	}
 
 	@GET
-	@Path("/filterbyId")
+	@Path("/filterbyname")
 	@Produces("application/json")
-	public List<Trade> filterByTraderId(@QueryParam("traderId") long traderId) {
+	public List<Trade> filterByName(@QueryParam("productName") String productName) {
 		if (myLocalBean != null)
-			return myLocalBean.filterByTraderId(traderId);
+			return myLocalBean.filterByName(productName);
 		else
 			return null;
 
