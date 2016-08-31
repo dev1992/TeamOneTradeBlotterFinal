@@ -61,7 +61,7 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 			query.setParameter("username", userName);
 			passwords = query.getResultList();
 			System.out.println(results);
-			Inter actualPassword = passwords.get(0);
+			Integer actualPassword = passwords.get(0);
 			System.out.println("Actual Passwd:---> "+actualPassword);
 			System.out.println("Hash code --> "+password.hashCode());
 			return actualPassword == password.hashCode();
