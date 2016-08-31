@@ -11,4 +11,6 @@ import javax.ws.rs.Produces;
 @Consumes({ "application/xml", "application/json" })
 public class MessageResource {
 
+	
+	
 }
