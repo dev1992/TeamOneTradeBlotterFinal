@@ -19,8 +19,15 @@ import java.util.Date;
 public class Trade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private TradePK id;
+//	@EmbeddedId
+//	private TradePK id;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int tradeId;
+
+	@Column(insertable=false, updatable=false)
+	private int traders_traderId;
 
 	private String buyerFirm;
 
@@ -57,13 +64,13 @@ public class Trade implements Serializable {
 	public Trade() {
 	}
 
-	public TradePK getId() {
-		return this.id;
-	}
-
-	public void setId(TradePK id) {
-		this.id = id;
-	}
+//	public TradePK getId() {
+//		return this.id;
+//	}
+//
+//	public void setId(TradePK id) {
+//		this.id = id;
+//	}
 
 	public String getBuyerFirm() {
 		return this.buyerFirm;
@@ -167,6 +174,34 @@ public class Trade implements Serializable {
 
 	public void setTrader(Trader trader) {
 		this.trader = trader;
+	}
+
+	/**
+	 * @return the tradeId
+	 */
+	public int getTradeId() {
+		return tradeId;
+	}
+
+	/**
+	 * @param tradeId the tradeId to set
+	 */
+	public void setTradeId(int tradeId) {
+		this.tradeId = tradeId;
+	}
+
+	/**
+	 * @return the traders_traderId
+	 */
+	public int getTraders_traderId() {
+		return traders_traderId;
+	}
+
+	/**
+	 * @param traders_traderId the traders_traderId to set
+	 */
+	public void setTraders_traderId(int traders_traderId) {
+		this.traders_traderId = traders_traderId;
 	}
 
 }

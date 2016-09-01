@@ -201,6 +201,21 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 		return null;
 	}
 
+	@Override
+	public List<Trade> filterByUser(String userName) {
+		Query query = em.createQuery("Select distinct t from Trader t where userName = :userName",Trader.class);
+		query.setParameter("userName", userName);
+		Trader trader = (Trader) query.getSingleResult();
+		if (trader == null) {
+			return null;
+		} else {
+			query = em.createQuery("Select t from Trade t where t.trader = :trader",Trade.class);
+			query.setParameter("trader", trader);
+			List<Trade> trades = query.getResultList();
+			return trades;
+		}
+	}
+
 	// public List<Trade> filterByTime(String startTime, String endTime) {
 	//
 	//

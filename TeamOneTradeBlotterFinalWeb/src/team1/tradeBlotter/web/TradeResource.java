@@ -52,6 +52,17 @@ public class TradeResource {
 			return null;
 
 	}
+	
+	@GET
+	@Path("/filterbyuser")
+	@Produces("application/json")
+	public List<Trade> filterByUserName(@QueryParam("userName") String userName) {
+		if (myLocalBean != null)
+			return myLocalBean.filterByUser(userName);
+		else
+			return null;
+
+	}
 
 	@POST
 	@Path("/filterbytypesecure")
@@ -111,7 +122,7 @@ public class TradeResource {
 	@GET
 	@Path("/filterbydate")
 	@Produces("application/json")
-	public List<Trade> filterByDate(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime) {
+	public List<Trade> filterByDate(@QueryParam("startDate") String startTime, @QueryParam("endDate") String endTime) {
 		if (myLocalBean != null)
 			return myLocalBean.filterByDate(startTime, endTime);
 		else
