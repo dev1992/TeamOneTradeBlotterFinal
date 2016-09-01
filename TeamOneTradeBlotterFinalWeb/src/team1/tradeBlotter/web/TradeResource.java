@@ -53,17 +53,6 @@ public class TradeResource {
 
 	}
 	
-	@GET
-	@Path("/filterbyuser")
-	@Produces("application/json")
-	public List<Trade> filterByUserName(@QueryParam("userName") String userName) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByUser(userName);
-		else
-			return null;
-
-	}
-
 	@POST
 	@Path("/filterbytypesecure")
 	@Consumes("application/x-www-form-urlencoded")
@@ -75,8 +64,6 @@ public class TradeResource {
 
 	}
 
-<<<<<<< HEAD
-=======
 	@GET
 	@Path("/filterbyname")
 	@Produces("application/json")
@@ -87,16 +74,6 @@ public class TradeResource {
 			return null;
 
 	}
-
-	@GET
-	@Path("/filterbyquantity")
-	@Produces("application/json")
-	public List<Trade> filterByQuantity(@QueryParam("quantity") int quantity) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByQuantity(quantity);
-		else
-			return null;
->>>>>>> master
 
 
 
