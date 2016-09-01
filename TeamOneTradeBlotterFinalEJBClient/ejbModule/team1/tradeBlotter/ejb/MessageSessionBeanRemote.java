@@ -13,6 +13,8 @@ public interface MessageSessionBeanRemote {
 
 	public List<Message>  readMessage(String userName);
 	
+	public List<Message> readMessageByTopic(String productType);
+	
 	public List<Message> readAllMessages();
 
 	public boolean deleteMessage(Message msg);

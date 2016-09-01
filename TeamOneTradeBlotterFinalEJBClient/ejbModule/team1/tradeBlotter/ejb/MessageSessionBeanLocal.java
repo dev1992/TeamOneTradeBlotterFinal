@@ -12,6 +12,8 @@ public interface MessageSessionBeanLocal {
 	public boolean createMessage(String messageBody, String subjectName, String userName);
 
 	public List<Message> readMessage(String userName);
+	
+	public List<Message> readMessageByTopic(String productType);
 
 	public List<Message> readAllMessages();
 

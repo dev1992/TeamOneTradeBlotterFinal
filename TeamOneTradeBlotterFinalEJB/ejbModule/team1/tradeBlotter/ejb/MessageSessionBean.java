@@ -43,7 +43,7 @@ public class MessageSessionBean implements MessageSessionBeanRemote, MessageSess
 		System.out.println("Creator -> " + creator.getUserName());
 		System.out.println("Subject -> " + subject.getSubjectName());
 		Message msg = new Message();
-//		System.out.println("Message id is ---> " + msg.getId());
+		// System.out.println("Message id is ---> " + msg.getId());
 		msg.setMessageBody(messageBody);
 		msg.setSubject(subject);
 		msg.setTrader(creator);
@@ -68,13 +68,10 @@ public class MessageSessionBean implements MessageSessionBeanRemote, MessageSess
 		// System.out.println("\n" + receiverList.contains(new Trader("user1",
 		// "password".hashCode(), "admin", "admin")) +
 		// "\n" + receiverList.size());
-		
-		
-		
 
 		if (creator != null) {
 
-			System.out.println("Creator ---> "+creator.getUserName() + "\n\n");
+			System.out.println("Creator ---> " + creator.getUserName() + "\n\n");
 
 			TypedQuery<Message> query2 = em.createQuery("Select m from Message m where m.trader = :creator",
 					Message.class);
@@ -107,6 +104,24 @@ public class MessageSessionBean implements MessageSessionBeanRemote, MessageSess
 		TypedQuery<Message> query = em.createQuery("SELECT m FROM Message AS m", Message.class);
 		List<Message> messages = query.getResultList();
 		return messages;
+	}
+
+	@Override
+	public List<Message> readMessageByTopic(String productType) {
+		TypedQuery<Subject> query = em.createQuery("SELECT distinct s FROM Subject s WHERE s.subjectName = :productType", Subject.class);
+		query.setParameter("productType", productType);
+		Subject subject = (Subject) query.getSingleResult();
+
+		if (subject != null) {
+
+			TypedQuery<Message> query2 = em.createQuery("Select m from Message m where m.subject = :subject",
+					Message.class);
+			query2.setParameter("subject", subject);
+			List<Message> messages = query2.getResultList();
+
+			return messages;
+		}
+		return null;
 	}
 
 }

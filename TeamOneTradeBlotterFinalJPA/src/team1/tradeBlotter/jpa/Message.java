@@ -23,6 +23,12 @@ public class Message implements Serializable {
 
 	@Lob
 	private String messageBody;
+	
+	@Column(insertable=false, updatable=false)
+	private int subjects_subjectId;
+
+	@Column(insertable=false, updatable=false)
+	private int traders_traderId;
 
 	// bi-directional many-to-one association to Subject
 	@ManyToOne
@@ -77,6 +83,34 @@ public class Message implements Serializable {
 
 	public void setTrader(Trader trader) {
 		this.trader = trader;
+	}
+
+	/**
+	 * @return the subjects_subjectId
+	 */
+	public int getSubjects_subjectId() {
+		return subjects_subjectId;
+	}
+
+	/**
+	 * @param subjects_subjectId the subjects_subjectId to set
+	 */
+	public void setSubjects_subjectId(int subjects_subjectId) {
+		this.subjects_subjectId = subjects_subjectId;
+	}
+
+	/**
+	 * @return the traders_traderId
+	 */
+	public int getTraders_traderId() {
+		return traders_traderId;
+	}
+
+	/**
+	 * @param traders_traderId the traders_traderId to set
+	 */
+	public void setTraders_traderId(int traders_traderId) {
+		this.traders_traderId = traders_traderId;
 	}
 
 }

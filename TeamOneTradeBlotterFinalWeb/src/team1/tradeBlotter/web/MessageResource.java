@@ -68,9 +68,18 @@ public class MessageResource {
 			return null;
 	}
 
-//	@DELETE
-//	public boolean deleteMessage(@QueryParam("message") Message msg) {
-//		return myLocalBean.deleteMessage(msg);
-//	}
+	@GET
+	@Path("/bytopic")
+	@Produces("application/json")
+	public List<Message> readMessagesBytopic(@QueryParam("productType") String productType) {
+		if (myLocalBean != null)
+			return myLocalBean.readMessageByTopic(productType);
+		else
+			return null;
+	}
+	// @DELETE
+	// public boolean deleteMessage(@QueryParam("message") Message msg) {
+	// return myLocalBean.deleteMessage(msg);
+	// }
 
 }
