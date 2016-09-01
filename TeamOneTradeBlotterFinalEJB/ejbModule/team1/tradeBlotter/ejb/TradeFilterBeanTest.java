@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import team1.tradeBlotter.jpa.Trade;
 import team1.tradeBlotter.jpa.Trader;
-
+// this is the junit test file, we tested TradeFilterBean functionalities here
 public class TradeFilterBeanTest {
 	
 	TradeFilterBeanRemote tfbRemote;
