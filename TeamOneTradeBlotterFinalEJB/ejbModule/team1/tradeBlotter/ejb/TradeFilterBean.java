@@ -195,6 +195,12 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 		return null;
 	}
 
+	@Override
+	public List<Trade> filterByQuantity(int quan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	// public List<Trade> filterByTime(String startTime, String endTime) {
 	//
 	//
