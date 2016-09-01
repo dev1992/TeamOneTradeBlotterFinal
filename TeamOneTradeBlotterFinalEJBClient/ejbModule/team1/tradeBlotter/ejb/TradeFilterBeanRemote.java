@@ -21,7 +21,15 @@ public interface TradeFilterBeanRemote {
 
 	public List<Trade> filterByName(String name);
 
+<<<<<<< HEAD
 	//public List<Trade> filterByPrice(double price1, double price2);
+=======
+	public List<Trade> filterByUser(String userName);
+	
+	public List<Trade> filterByPrice(double price1, double price2);
+
+	public List<Trade> filterByQuantity(int quan);
+>>>>>>> master
 
 	public List<Trade> filterBySide(byte side);
 

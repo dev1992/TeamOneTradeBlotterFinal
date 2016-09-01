@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -49,7 +52,31 @@ public class TradeResource {
 			return null;
 
 	}
+	
+	@GET
+	@Path("/filterbyuser")
+	@Produces("application/json")
+	public List<Trade> filterByUserName(@QueryParam("userName") String userName) {
+		if (myLocalBean != null)
+			return myLocalBean.filterByUser(userName);
+		else
+			return null;
 
+	}
+
+	@POST
+	@Path("/filterbytypesecure")
+	@Consumes("application/x-www-form-urlencoded")
+	public List<Trade> filterByProductTypeSecure(@FormParam("productType") String productType) {
+		if (myLocalBean != null)
+			return myLocalBean.filterByType(productType);
+		else
+			return null;
+
+	}
+
+<<<<<<< HEAD
+=======
 	@GET
 	@Path("/filterbyname")
 	@Produces("application/json")
@@ -61,6 +88,15 @@ public class TradeResource {
 
 	}
 
+	@GET
+	@Path("/filterbyquantity")
+	@Produces("application/json")
+	public List<Trade> filterByQuantity(@QueryParam("quantity") int quantity) {
+		if (myLocalBean != null)
+			return myLocalBean.filterByQuantity(quantity);
+		else
+			return null;
+>>>>>>> master
 
 
 
@@ -89,7 +125,7 @@ public class TradeResource {
 	@GET
 	@Path("/filterbydate")
 	@Produces("application/json")
-	public List<Trade> filterByDate(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime) {
+	public List<Trade> filterByDate(@QueryParam("startDate") String startTime, @QueryParam("endDate") String endTime) {
 		if (myLocalBean != null)
 			return myLocalBean.filterByDate(startTime, endTime);
 		else

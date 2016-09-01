@@ -19,7 +19,13 @@ public class RestApplication extends Application {
 		
 		singletons.add(new TradeResource());
 		singletons.add(new TraderResource());
+<<<<<<< HEAD
 		singletons.add(new MathResource());
+=======
+		singletons.add(new MessageResource());
+		singletons.add(new NoteResource());
+		singletons.add(new MailResource());
+>>>>>>> master
 	}
 	
 	@Override

@@ -67,9 +67,15 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 			passwords = query.getResultList();
 			System.out.println(results);
 			Integer actualPassword = passwords.get(0);
+<<<<<<< HEAD
 			System.out.println("Actual Passwd:---> "+actualPassword);
 			System.out.println("Hash code --> "+password.hashCode());
 			return actualPassword == password.hashCode();
+=======
+			System.out.println("Actual Passwd:---> " + Integer.valueOf(actualPassword));
+			System.out.println("Hash code --> " + password.hashCode());
+			return Integer.valueOf(actualPassword) == password.hashCode();
+>>>>>>> master
 		}
 	}
 
@@ -120,6 +126,32 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 		return trades;
 	}
 
+<<<<<<< HEAD
+=======
+	public List<Trade> filterByTraderId(long traderId) {
+
+		String sql = "SELECT t FROM Trade AS t WHERE t.traderId = :traderId";
+		// System.out.println(sql);
+		TypedQuery<Trade> query = em.createQuery(sql, Trade.class);
+		query.setParameter("traderId", traderId);
+
+		// Execute the query, and get a collection of products back.
+		List<Trade> trades = query.getResultList();
+
+		return trades;
+	}
+
+	public List<Trade> filterByPrice(double price1, double price2) {
+
+		String sql = "SELECT t FROM Trade AS t WHERE t.price BETWEEN ?1 AND ?2";
+		// System.out.println(sql);
+		TypedQuery<Trade> query = em.createQuery(sql, Trade.class);
+		query.setParameter(1, price1);
+		query.setParameter(2, price2);
+
+		// Execute the query, and get a collection of products back.
+		List<Trade> trades = query.getResultList();
+>>>>>>> master
 
 
 //	public List<Trade> filterByPrice(double price1, double price2) {
@@ -220,6 +252,7 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<Trade> filterByCurrency(String currency){
 		String sql = "SELECT t FROM Trade AS t WHERE t.currency = :currency";
 		
@@ -231,5 +264,49 @@ public class TradeFilterBean implements TradeFilterBeanRemote, TradeFilterBeanLo
 	}
 	
 	
+=======
+	public List<Trade> filterByQuantity(int quan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Trade> filterByUser(String userName) {
+		Query query = em.createQuery("Select distinct t from Trader t where userName = :userName",Trader.class);
+		query.setParameter("userName", userName);
+		Trader trader = (Trader) query.getSingleResult();
+		if (trader == null) {
+			return null;
+		} else {
+			query = em.createQuery("Select t from Trade t where t.trader = :trader",Trade.class);
+			query.setParameter("trader", trader);
+			List<Trade> trades = query.getResultList();
+			return trades;
+		}
+	}
+
+	// public List<Trade> filterByTime(String startTime, String endTime) {
+	//
+	//
+	//
+	// String sql = "SELECT t FROM Trade AS t WHERE t.executionTime BETWEEN
+	// :startTime AND :endTime";
+	// // System.out.println(sql);
+	// TypedQuery<Trade> query = em.createQuery(sql, Trade.class);
+	// query.setParameter("executionTime", startTime);
+	// query.setParameter("executionTime", endTime);
+	//
+	//
+	// // Execute the query, and get a collection of products back.
+	// List<Trade> trades = query.getResultList();
+	//
+	// // for (Trade trade: trades) {
+	// // displayProductOnServerConsole("Got product in getProductsByName()",
+	// // trades);
+	// // }
+	//
+	// return trades;
+	// }
+>>>>>>> master
 
 }

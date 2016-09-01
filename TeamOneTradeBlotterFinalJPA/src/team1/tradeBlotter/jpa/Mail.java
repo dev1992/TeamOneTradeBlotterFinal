@@ -3,6 +3,8 @@ package team1.tradeBlotter.jpa;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 /**
  * The persistent class for the mails database table.
@@ -14,28 +16,36 @@ import javax.persistence.*;
 public class Mail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private MailPK id;
+//	@EmbeddedId
+//	private MailPK id;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int mailId;
 
 	@Lob
 	private String mailBody;
-
+    
+	@Column(insertable=false, updatable=false)
+	private int traders_traderId;
+	
 	private int receiverId;
 
 	//bi-directional many-to-one association to Trader
 	@ManyToOne
 	@JoinColumn(name="Traders_traderId")
+	@JsonBackReference
 	private Trader trader;
 
 	public Mail() {
 	}
 
-	public MailPK getId() {
-		return this.id;
+	public int getId() {
+		return this.mailId;
 	}
 
-	public void setId(MailPK id) {
-		this.id = id;
+	public void setId(int id) {
+		this.mailId = id;
 	}
 
 	public String getMailBody() {
@@ -60,6 +70,22 @@ public class Mail implements Serializable {
 
 	public void setTrader(Trader trader) {
 		this.trader = trader;
+	}
+
+	public int getTraders_traderId() {
+		return traders_traderId;
+	}
+
+	public void setTraders_traderId(int traders_traderId) {
+		this.traders_traderId = traders_traderId;
+	}
+
+	public int getMailId() {
+		return mailId;
+	}
+
+	public void setMailId(int mailId) {
+		this.mailId = mailId;
 	}
 
 }
