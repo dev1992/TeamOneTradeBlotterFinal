@@ -11,7 +11,7 @@ public interface TradeFilterBeanRemote {
 
 	public List<Trade> getAllTrades();
 
-	public List<Trader> getAllTraders();
+	//public List<Trader> getAllTraders();
 
 	public boolean checkLogin(String username, String password);
 
@@ -21,15 +21,13 @@ public interface TradeFilterBeanRemote {
 
 	public List<Trade> filterByName(String name);
 
-	public List<Trade> filterByTraderId(long l);
-
-	public List<Trade> filterByPrice(double price1, double price2);
-
-	public List<Trade> filterByQuantity(int quan);
+	//public List<Trade> filterByPrice(double price1, double price2);
 
 	public List<Trade> filterBySide(byte side);
 
 	public List<Trade> filterByDate(String startTime, String endTime);
 
 	public List<Trade> filterByExecutionTime(String startTime, String endTime);
+	
+	public List<Trade> filterByCurrency(String currency);
 }

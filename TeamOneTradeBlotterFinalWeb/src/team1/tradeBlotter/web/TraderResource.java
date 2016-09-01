@@ -1,7 +1,5 @@
 package team1.tradeBlotter.web;
 
-import java.util.List;
-
 import javax.enterprise.context.RequestScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -39,14 +37,14 @@ public class TraderResource {
 		}
 	}
 
-	@GET
-	@Produces("application/json")
-	public List<Trader> getTraders() {
-
-		if (myLocalBean == null)
-			return null;
-		return myLocalBean.getAllTraders();
-	}
+//	@GET
+//	@Produces("application/json")
+//	public List<Trader> getTraders() {
+//
+//		if (myLocalBean == null)
+//			return null;
+//		return myLocalBean.getAllTraders();
+//	}
 
 	@GET
 	@Path("/signin")

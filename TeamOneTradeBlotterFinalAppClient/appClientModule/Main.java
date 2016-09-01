@@ -6,6 +6,7 @@ import javax.naming.InitialContext;
 
 import team1.tradeBlotter.ejb.TradeFilterBeanRemote;
 import team1.tradeBlotter.jpa.Trade;
+import team1.tradeBlotter.jpa.Trader;
 
 public class Main {
 	public static void main(String[] args) {
@@ -35,24 +36,22 @@ try {
 			String fullJndiName = String.format("%s/%s/%s!%s.%s", appName, moduleName, beanName, packageName, className);
 			TradeFilterBeanRemote bean = (TradeFilterBeanRemote) context.lookup("TeamOneTradeBlotterFinal/TeamOneTradeBlotterFinalEJB/TradeFilterBean!team1.tradeBlotter.ejb.TradeFilterBeanRemote");
 			System.out.println(1);
-			List<Trade> products = bean.getAllTrades();
-			displayProducts("All products", products);
+			//List<Trader> products = bean.getAllTraders();
+			//displayProducts("All products", products);
+			//System.out.println("Size of Trader list : "+products.size());
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("Exception: " + ex.getMessage());
 		}
 	}
-
-	/* (non-Java-doc)
-	 * @see java.lang.Object#Object()
-	 */
+	
+	
 	public Main() {
 		super();
 	}
 	
 private static void displayProducts(String message, List<Trade> trades) {
-		
 		System.out.printf("\n%s\n", message);
 		for (Trade trade: trades) {
 			System.out.println(trade.getProductName());

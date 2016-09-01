@@ -23,7 +23,7 @@ public class TradeResource {
 			InitialContext context = new InitialContext();
 			myLocalBean = (TradeFilterBeanLocal) context.lookup(
 					"java:global/TeamOneTradeBlotterFinal/TeamOneTradeBlotterFinalEJB/TradeFilterBean!team1.tradeBlotter.ejb.TradeFilterBeanLocal");
-			System.out.println(1);
+			//System.out.println(1);
 		} catch (NamingException ex) {
 			ex.printStackTrace();
 		}
@@ -61,38 +61,19 @@ public class TradeResource {
 
 	}
 
-	@GET
-	@Path("/filterbyId")
-	@Produces("application/json")
-	public List<Trade> filterByTraderId(@QueryParam("traderId") long traderId) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByTraderId(traderId);
-		else
-			return null;
 
-	}
 
-	@GET
-	@Path("/filterbyquantity")
-	@Produces("application/json")
-	public List<Trade> filterByQuantity(@QueryParam("quantity") int quantity) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByQuantity(quantity);
-		else
-			return null;
 
-	}
-
-	@GET
-	@Path("/filterbyprice")
-	@Produces("application/json")
-	public List<Trade> filterByprice(@QueryParam("price1") double price1, @QueryParam("price2") double price2) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByPrice(price1, price2);
-		else
-			return null;
-
-	}
+//	@GET
+//	@Path("/filterbyprice")
+//	@Produces("application/json")
+//	public List<Trade> filterByprice(@QueryParam("price1") double price1, @QueryParam("price2") double price2) {
+//		if (myLocalBean != null)
+//			return myLocalBean.filterByPrice(price1, price2);
+//		else
+//			return null;
+//
+//	}
 
 	@GET
 	@Path("/filterbyside")
@@ -116,15 +97,30 @@ public class TradeResource {
 
 	}
 
+//	@GET
+//	@Path("/filterbyprice")
+//	@Produces("application/json")
+//	public List<Trade> filterByPrice(@QueryParam("price1") double price1, @QueryParam("price2") double price2) {
+//			return myLocalBean.filterByPrice(price1, price2);
+//	}
+	
 	@GET
-	@Path("/filterby")
+	@Path("/filterbyexecutiontime")
 	@Produces("application/json")
-	public List<Trade> filterByPrice(@QueryParam("price1") double price1, @QueryParam("price2") double price2) {
-		if (myLocalBean != null)
-			return myLocalBean.filterByPrice(price1, price2);
-		else
-			return null;
-
+	public List<Trade> filterByTime(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime){
+		System.out.println("In REST URL : "+startTime);
+		System.out.println("In REST URL : "+endTime);
+		return myLocalBean.filterByExecutionTime(startTime, endTime);
 	}
+	
+
+	@GET
+	@Path("/filterbycurrency")
+	@Produces("application/json")
+	public List<Trade> filterByCurrency(@QueryParam("currency") String currency) {
+			return myLocalBean.filterByCurrency(currency);
+	}
+	
+	
 
 }

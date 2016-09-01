@@ -19,6 +19,7 @@ public class RestApplication extends Application {
 		
 		singletons.add(new TradeResource());
 		singletons.add(new TraderResource());
+		singletons.add(new MathResource());
 	}
 	
 	@Override
